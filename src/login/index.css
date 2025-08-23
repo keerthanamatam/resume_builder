@@ -1,0 +1,11 @@
+.loginform {
+  display:flex;
+  justify-content: center;
+  border: none;
+  padding: 68px;
+  margin: 100px auto; 
+  max-width: 400px;  
+  border-radius: 8px; 
+  background-color: #e0e0eb; 
+  box-shadow: 0px 8px 15px rgba(0,0,0,0.5);
+}
