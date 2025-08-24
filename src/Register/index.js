@@ -8,9 +8,14 @@ const Register = () => {
     const [showConfirm, setShowConfirm] = useState(false)
 
     return (
-        <Grid container justifyContent='center' alignContent='center' style={{ height: '100hv' }} >
+        <Grid container justifyContent='center' alignItems='center' style={{
+            height: '100vh',
+            background: "linear-gradient(to right, #b085f5, #6fa8ff)",
+
+        }} >
+
             <Paper
-                elevation={6}
+                elevation={10}
                 sx={{
                     padding: '30px',
                     margin: '30px',
@@ -30,7 +35,7 @@ const Register = () => {
                             <TextField fullWidth variant="outlined" label='Enter Name' sx={{ backgroundColor: '#f2f2f2' }} InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start" >
-                                        <Person />
+                                        <Person color="primary" />
                                     </InputAdornment>
                                 )
                             }} />
@@ -39,7 +44,7 @@ const Register = () => {
                         <Grid>
                             <TextField fullWidth variant="outlined" label='Enter Email' sx={{ backgroundColor: '#f2f2f2' }} InputProps={{
                                 startAdornment: (<InputAdornment position="start">
-                                    <Email />
+                                    <Email color="primary" />
                                 </InputAdornment>)
                             }} />
                         </Grid>
@@ -48,7 +53,7 @@ const Register = () => {
                             <TextField fullWidth variant="outlined" label='Enter Phone Number' sx={{ backgroundColor: '#f2f2f2' }} InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
-                                        <LocalPhone />
+                                        <LocalPhone color="primary" />
                                     </InputAdornment>
                                 )
                             }} />
@@ -57,7 +62,7 @@ const Register = () => {
                             <TextField fullWidth variant="outlined" type={showPassword ? 'text' : 'password'} label='Enter Password' sx={{ backgroundColor: '#f2f2f2' }} InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
-                                        <Lock />
+                                        <Lock color="primary" />
                                     </InputAdornment>
                                 ),
                                 endAdornment: (
@@ -73,7 +78,7 @@ const Register = () => {
                             <TextField fullWidth variant="outlined" type={showConfirm ? 'text' : 'password'} label='Enter confirm Password' sx={{ backgroundColor: '#f2f2f2' }} InputProps={{
                                 startAdornment: (
                                     <InputAdornment position="start">
-                                        <Lock />
+                                        <Lock color="primary" />
                                     </InputAdornment>
                                 ),
                                 endAdornment: (
