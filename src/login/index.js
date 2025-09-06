@@ -10,6 +10,7 @@ const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [showPassword, setShowPassword] = useState(false)
+    const [ValidationError, setValidationError] = useState(false)
     const register = () => {
         navigate("/register");
     }
@@ -22,6 +23,18 @@ const Login = () => {
             }
         }
         console.log(credentials)
+    }
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (emailRegex.test(email)) {
+            setValidationError(false)
+            setEmail(email)
+        }
+        else {
+            console.log('sdfsdf')
+            setEmail(email)
+            setValidationError(true)
+        }
     }
     return (
         <Grid
@@ -60,8 +73,11 @@ const Login = () => {
                             <TextField label='Enter Email' variant="outlined"
                                 value={email}
                                 fullWidth
+                                required
                                 size='small'
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => validateEmail(e.target.value)}
+                                error={ValidationError}
+                                helperText={ValidationError ? "Please Enter valid Email" : ''}
                                 sx={{
                                     backgroundColor: '#f2f2f2', borderRadius: '8px',
                                     "& .MuiInputBase-root": { height: 50 }
@@ -79,6 +95,7 @@ const Login = () => {
                             <TextField label='Enter Password'
                                 size='small'
                                 type={showPassword ? 'text' : 'password'}
+                                required
                                 variant="outlined"
                                 fullWidth
                                 value={password}
