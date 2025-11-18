@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './index.css'
 import { Email, Lock, Visibility, VisibilityOff } from '@mui/icons-material'
 import { useNavigate } from "react-router-dom";
+import { signInApi } from '../api/auth'
 
 
 const Login = () => {
@@ -23,6 +24,17 @@ const Login = () => {
             }
         }
         console.log(credentials)
+        const response =  signInApi(credentials)
+        console.log({response})
+        try{
+        if(response.status == 200){
+            navigate("/dashboard");
+        }
+    }
+       catch(e){
+        console.error('wrong password')
+       }
+
     }
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -31,7 +43,6 @@ const Login = () => {
             setEmail(email)
         }
         else {
-            console.log('sdfsdf')
             setEmail(email)
             setValidationError(true)
         }
