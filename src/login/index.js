@@ -24,16 +24,16 @@ const Login = () => {
             }
         }
         console.log(credentials)
-        const response =  signInApi(credentials)
-        console.log({response})
-        try{
-        if(response.status == 200){
-            navigate("/dashboard");
+        const response = signInApi(credentials)
+        console.log({ response })
+        try {
+            if (response.status == 200) {
+                navigate("/dashboard");
+            }
         }
-    }
-       catch(e){
-        console.error('wrong password')
-       }
+        catch (e) {
+            console.error('wrong password')
+        }
 
     }
     const validateEmail = (email) => {

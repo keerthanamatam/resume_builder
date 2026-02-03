@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Grid, TextField, Button, Paper, Typography, InputAdornment, IconButton } from "@mui/material";
 import '../login/index.css'
 import { Person, Email, LocalPhone, Lock, VisibilityOff, Visibility } from '@mui/icons-material'
+import { signUp } from '../api/auth'
 
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false)
@@ -23,7 +24,11 @@ const Register = () => {
             }))
         }
         console.log(formData)
+        const response = signUp(formData)
+        console.log({response})
+        if(response.status == 200){
 
+        }
 
     }
     const handleChange = (e) => {
