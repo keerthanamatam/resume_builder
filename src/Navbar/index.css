@@ -3,9 +3,8 @@
 .nav-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between;  */
   padding: 16px 32px;
-  margin-right : 75%;
+  width: 180px;
   background: #002080;
   color: white
 }

@@ -1,18 +1,16 @@
 .dashboard-layout {
-  display: flex;       
+  display: flex;
   height: 100vh;
-  width: 17px
+  width: 100%;
 }
 
 .nav-container {
-  width: 220px;      
+  width: 180px;
   background: #002080;
   color: white;
 }
 
-
-/* .container {
-  flex: 1;             
-  padding: 20px;
-  background:black
-} */
+.container {
+  flex: 1;
+  padding: 24px;
+}
