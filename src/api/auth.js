@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 
 export const signInApi = async (credentials) => {
@@ -14,12 +13,15 @@ export const signInApi = async (credentials) => {
 
     const data = await res.json();
 
-    console.log(data, res)
     if (res.ok) {
       toast.success('Logged in successfully')
+    } else {
+      toast.error(data.message || 'Login failed')
     }
+    return { ok: res.ok, data };
   } catch (e) {
-    toast.error('login failed', e)
+    toast.error('Login failed')
+    return { ok: false, error: e };
   }
 }
 

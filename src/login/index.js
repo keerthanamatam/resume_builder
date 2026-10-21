@@ -15,26 +15,16 @@ const Login = () => {
     const register = () => {
         navigate("/register");
     }
-    const signIn = () => {
-        let credentials
-        if (email && password) {
-            credentials = {
-                email,
-                password
-            }
-        }
-        console.log(credentials)
-        const response = signInApi(credentials)
-        console.log({ response })
-        try {
-            if (response.status == 200) {
-                navigate("/dashboard");
-            }
-        }
-        catch (e) {
-            console.error('wrong password')
+    const signIn = async (event) => {
+        event.preventDefault()
+        if (!email || !password) {
+            return
         }
 
+        const response = await signInApi({ email, password })
+        if (response.ok) {
+            navigate("/dashboard")
+        }
     }
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -78,7 +68,7 @@ const Login = () => {
                 <Typography align='center' variant='body2' color='textSecondary' gutterBottom>
                     Please login here
                 </Typography>
-                <form>
+                <form onSubmit={signIn}>
                     <Grid container spacing={2} direction='column'>
                         <Grid item >
                             <TextField label='Enter Email' variant="outlined"
@@ -134,10 +124,10 @@ const Login = () => {
 
                         <Grid item container spacing={2}>
                             <Grid item xs={6}>
-                                <Button fullWidth variant='contained' onClick={register} color='primary'>Register</Button>
+                                <Button type='button' fullWidth variant='contained' onClick={register} color='primary'>Register</Button>
                             </Grid>
                             <Grid item xs={6} >
-                                <Button fullWidth variant='outlined' onClick={signIn} color='primary'>Login</Button>
+                                <Button type='submit' fullWidth variant='outlined' color='primary'>Login</Button>
                             </Grid>
                         </Grid>
 
